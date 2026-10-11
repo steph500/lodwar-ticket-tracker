@@ -1,0 +1,1 @@
+{ "/tickets": { "target": "http://127.0.0.1:3000", "secure": false }, "/tickets/**": { "target": "http://127.0.0.1:3000", "secure": false } }

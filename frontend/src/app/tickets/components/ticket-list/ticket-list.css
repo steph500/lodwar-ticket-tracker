@@ -1,0 +1,10 @@
+.table-scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 9px; }
+table { width: 100%; border-collapse: collapse; text-align: left; table-layout: fixed; min-width: 870px; }
+th { background: #f1f4f9; color: #405171; font-size: 13px; font-weight: 650; padding: 17px 14px; }
+td { padding: 16px 14px; border-top: 1px solid #edf0f6; font-size: 14px; }
+th:nth-child(1) { width: 9%; } th:nth-child(2) { width: 23%; } th:nth-child(3) { width: 25%; }
+th:nth-child(4) { width: 15%; } th:nth-child(5) { width: 11%; } th:nth-child(6) { width: 17%; }
+.title-cell, .description-cell { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.description-cell, .date-cell { color: var(--muted); }
+.ticket-id { font-family: ui-monospace, monospace; font-size: 12px; }
+.empty { text-align: center; color: var(--muted); padding: 50px 16px; }

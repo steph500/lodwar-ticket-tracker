@@ -1,0 +1,19 @@
+<div class="table-scroll">
+  <table>
+    <thead><tr><th>#</th><th>Title</th><th>Description</th><th>Status</th><th>Priority</th><th>Created At</th></tr></thead>
+    <tbody>
+      @for (ticket of tickets(); track ticket.id) {
+        <tr>
+          <td class="ticket-id" [title]="ticket.id">{{ ticket.id.slice(0, 8) }}</td>
+          <td class="title-cell">{{ ticket.title }}</td>
+          <td class="description-cell">{{ ticket.description || '—' }}</td>
+          <td><span class="badge" [class]="'badge ' + ticket.status">{{ labels[ticket.status] }}</span></td>
+          <td><span [class]="'badge ' + ticket.priority">{{ ticket.priority | titlecase }}</span></td>
+          <td class="date-cell">{{ ticket.created_at | date:'MMM dd, yyyy HH:mm' }}</td>
+        </tr>
+      } @empty {
+        <tr><td colspan="6" class="empty">No tickets yet. Create a ticket to get started.</td></tr>
+      }
+    </tbody>
+  </table>
+</div>

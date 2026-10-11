@@ -1,0 +1,14 @@
+<form #form="ngForm" (ngSubmit)="submit()" aria-label="Create ticket">
+  <label for="new-title">Title <span class="required">*</span></label>
+  <input id="new-title" name="title" [(ngModel)]="title" required maxlength="255" placeholder="Enter a concise title" autofocus>
+  <label for="new-description">Description</label>
+  <textarea id="new-description" name="description" [(ngModel)]="description" rows="5" placeholder="Provide more details about the issue..."></textarea>
+  <label for="new-priority">Priority <span class="required">*</span></label>
+  <select id="new-priority" name="priority" [(ngModel)]="priority" required>
+    <option value="low">Low</option><option value="medium">Medium</option><option value="high">High</option>
+  </select>
+  <div class="form-actions">
+    <button type="button" class="secondary" (click)="cancelled.emit()" [disabled]="saving()">Cancel</button>
+    <button class="primary" type="submit" [disabled]="form.invalid || !title.trim() || saving()">{{ saving() ? 'Creating…' : 'Create Ticket' }}</button>
+  </div>
+</form>

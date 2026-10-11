@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+* { box-sizing: border-box; }
+:root { --border: #dfe5f0; --muted: #475b7e; --ink: #101b30; }
+body { margin: 0; padding: 16px; background: #edf2f8; color: var(--ink); font-family: Arial, Helvetica, sans-serif; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; border: 1px solid var(--border); border-radius: 7px; padding: 10px 16px; }
+button:disabled, select:disabled { cursor: not-allowed; opacity: .55; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid #83afff; outline-offset: 3px; }
+input, select, textarea { width: 100%; padding: 11px 13px; border: 1px solid #d7deeb; border-radius: 7px; background: #fff; font-size: 14px; }
+input::placeholder, textarea::placeholder { color: #667797; }
+.primary { background: #1260ff; border-color: #1260ff; color: white; font-weight: 600; box-shadow: 0 2px 4px #1260ff15; }
+.primary:hover:not(:disabled) { background: #074de0; } .secondary { background: #edf0f5; color: #344566; border-color: #edf0f5; }
+.subtitle { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.5; }
+.badge { display: inline-block; padding: 5px 12px; border-radius: 12px; white-space: nowrap; font-size: 12px; font-weight: 500; }
+.open, .low { background: #dff7ee; color: #007754; } .in_progress { background: #e0edff; color: #0956e8; }
+.closed { background: #ebeff5; color: #3e5071; } .high { background: #ffe5e8; color: #d02032; } .medium { background: #fff3d7; color: #a56800; }
+.alert { padding: 12px 15px; border-radius: 7px; font-size: 14px; margin-bottom: 16px; display: flex; gap: 12px; justify-content: space-between; align-items: center; }
+.error { background: #fff0f0; color: #a12e38; } .success { background: #edf9f3; color: #157653; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (max-width: 760px) { body { padding: 0; } }
