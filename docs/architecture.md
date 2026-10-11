@@ -62,3 +62,7 @@ Invalid input returns 400. Unknown routes return 404. Unexpected failures return
 ## Verification
 
 Three API integration tests use Express, Supertest, and a real, isolated PostgreSQL test database. They cover creation/validation/update behavior, status filtering with actual SQL pagination, and grouped statistics. Tests require a database name ending in `_test` and never truncate the development database. Manual browser verification covers the form, filter, pagination, inline status changes, details updates, and responsive layout.
+
+## Public deployment
+
+The frontend Vercel project serves the same Angular page. Its `/tickets` rewrite forwards requests to the separate native Express Vercel project, which connects through `pg` to a new isolated Neon Free PostgreSQL database. The production-only API Secret uses TLS with certificate verification. The entity, migration, four endpoints, and application layers are unchanged. Local development uses the Angular proxy and local PostgreSQL; previews have no production database credential.

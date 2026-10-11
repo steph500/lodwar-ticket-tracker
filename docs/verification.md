@@ -59,4 +59,12 @@ Verified on **11 October 2026 (EAT)** against the local application and real Pos
 
 Windows application control blocked an unsigned PostgreSQL extension in the official portable runtime. PostgreSQL was installed through Ubuntu's package manager in the existing WSL distribution instead. WSL initially stopped after the setup process exited; a persistent local WSL session keeps the database available. Neither resolution required disabling Windows security or using a hosted database.
 
-Public deployment is being added with an explicitly approved new Neon Free database. Both Git-linked Vercel projects reached READY, and the frontend production domain returned HTTP 200 without authentication. The database connection and hosted API/browser flows remain pending Neon sign-in and provisioning. Local API tests (3/3) and both builds passed again after the hosting changes. No assessment requirement depends on deployment.
+Public deployment is complete with an explicitly approved new isolated Neon Free database. Both Git-linked Vercel projects reached READY, and the frontend production domain returned HTTP 200 without authentication. The hosted database connection, all four API endpoints, and browser create/update flows passed. Local API tests (3/3) and both builds also passed after the hosting changes. No assessment requirement depends on deployment.
+
+## Public verification details
+
+Live app: https://lodwar-ticket-tracker.vercel.app.
+
+The new database was verified empty before migration, and its six expected columns were checked. Connection succeeded with TLS certificate verification. Through the frontend domain: POST returned 201 and a persisted open ticket; GET returned the ticket with the requested page size; PATCH saved status and priority; GET /tickets/stats reflected the change. A filtered page beyond the last page retained the total and returned no items. A title update returned 400; a nonexistent UUID returned 404.
+
+The hosted browser flow passed ticket creation, inline status changes, full details display, and status/priority changes in the details panel. Counts refreshed after mutations. Two harmless support tickets remain as demonstration data. No paid plan, Supabase project, hosted authentication, or existing application database was used. The exact three API integration tests remain separate from this manual hosted verification.
