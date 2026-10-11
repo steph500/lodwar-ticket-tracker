@@ -1,0 +1,6 @@
+.ticket-card, .update-card { background: #fff; border: 1px solid #edf0f6; border-radius: 9px; padding: 20px; margin-top: 18px; }
+.ticket-badges { display: flex; justify-content: space-between; }
+h3 { font-size: 16px; line-height: 1.4; margin: 18px 0 8px; overflow-wrap: anywhere; }
+.description { white-space: pre-wrap; overflow-wrap: anywhere; color: var(--muted); font-size: 14px; line-height: 1.65; }
+dl { border-top: 1px solid #edf0f6; margin: 20px 0 0; padding-top: 8px; } dt { color: var(--muted); font-size: 12px; margin-top: 12px; } dd { margin: 5px 0 0; font-size: 13px; } .full-id { overflow-wrap: anywhere; font-family: ui-monospace, monospace; font-size: 11px; }
+.update-card { display: grid; gap: 12px; } .update-card h3 { margin: 0 0 5px; } label { font-size: 13px; font-weight: 600; } .update-card button { margin-top: 6px; }

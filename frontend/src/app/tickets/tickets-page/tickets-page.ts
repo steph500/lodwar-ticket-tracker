@@ -3,11 +3,13 @@ import { FormsModule } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { TicketForm } from '../components/ticket-form/ticket-form';
 import { TicketList } from '../components/ticket-list/ticket-list';
-import { NewTicket, TicketPage, TicketStats, TicketStatus } from '../ticket.model';
+import { TicketDetails } from '../components/ticket-details/ticket-details';
+import { TicketPanel } from '../components/ticket-panel/ticket-panel';
+import { NewTicket, Ticket, TicketPage, TicketPriority, TicketStats, TicketStatus } from '../ticket.model';
 import { TicketService } from '../ticket.service';
 
 @Component({
-  selector: 'app-tickets-page', imports: [FormsModule, TicketForm, TicketList],
+  selector: 'app-tickets-page', imports: [FormsModule, TicketForm, TicketList, TicketDetails, TicketPanel],
   templateUrl: './tickets-page.html', styleUrl: './tickets-page.css',
 })
 export class TicketsPage implements OnInit {
@@ -19,6 +21,7 @@ export class TicketsPage implements OnInit {
   readonly error = signal('');
   readonly notice = signal('');
   readonly creating = signal(false);
+  readonly selected = signal<Ticket | null>(null);
   status: TicketStatus | '' = '';
   page = 1;
   limit = 10;
@@ -66,6 +69,22 @@ export class TicketsPage implements OnInit {
         this.status = '';
         this.page = 1;
         this.notice.set('Ticket created successfully.');
+        this.refresh();
+      },
+      error: error => { this.saving.set(false); this.fail(error); },
+    });
+  }
+
+  update(ticket: Ticket, changes: { status?: TicketStatus; priority?: TicketPriority }): void {
+    if (this.saving()) return;
+    this.saving.set(true);
+    this.error.set('');
+    this.notice.set('');
+    this.service.update(ticket.id, changes).subscribe({
+      next: updated => {
+        if (this.selected()?.id === updated.id) this.selected.set(updated);
+        this.saving.set(false);
+        this.notice.set('Ticket updated successfully.');
         this.refresh();
       },
       error: error => { this.saving.set(false); this.fail(error); },

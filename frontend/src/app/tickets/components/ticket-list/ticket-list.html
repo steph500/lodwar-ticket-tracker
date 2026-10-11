@@ -1,18 +1,19 @@
 <div class="table-scroll">
   <table>
-    <thead><tr><th>#</th><th>Title</th><th>Description</th><th>Status</th><th>Priority</th><th>Created At</th></tr></thead>
+    <thead><tr><th>#</th><th>Title</th><th>Description</th><th>Status</th><th>Priority</th><th>Created At</th><th>Actions</th></tr></thead>
     <tbody>
       @for (ticket of tickets(); track ticket.id) {
         <tr>
           <td class="ticket-id" [title]="ticket.id">{{ ticket.id.slice(0, 8) }}</td>
-          <td class="title-cell">{{ ticket.title }}</td>
+          <td class="title-cell"><button class="title-button" [disabled]="disabled()" (click)="selected.emit(ticket)" [title]="ticket.title">{{ ticket.title }}</button></td>
           <td class="description-cell">{{ ticket.description || '—' }}</td>
-          <td><span class="badge" [class]="'badge ' + ticket.status">{{ labels[ticket.status] }}</span></td>
+          <td><select [class]="'status-select ' + ticket.status" [attr.aria-label]="'Status for ' + ticket.title" [value]="ticket.status" [disabled]="disabled()" (change)="changeStatus(ticket, $event)"><option value="open">Open</option><option value="in_progress">In Progress</option><option value="closed">Closed</option></select></td>
           <td><span [class]="'badge ' + ticket.priority">{{ ticket.priority | titlecase }}</span></td>
           <td class="date-cell">{{ ticket.created_at | date:'MMM dd, yyyy HH:mm' }}</td>
+          <td><button class="details-button" [disabled]="disabled()" [attr.aria-label]="'View details for ' + ticket.title" (click)="selected.emit(ticket)">⋯</button></td>
         </tr>
       } @empty {
-        <tr><td colspan="6" class="empty">No tickets yet. Create a ticket to get started.</td></tr>
+        <tr><td colspan="7" class="empty">No tickets match this view. Create a ticket or change the status filter.</td></tr>
       }
     </tbody>
   </table>

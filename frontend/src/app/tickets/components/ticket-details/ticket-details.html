@@ -1,0 +1,12 @@
+<article class="ticket-card">
+  <div class="ticket-badges"><span [class]="'badge ' + ticket().priority">{{ ticket().priority | titlecase }}</span><span [class]="'badge ' + ticket().status">{{ labels[ticket().status] }}</span></div>
+  <h3>{{ ticket().title }}</h3>
+  <p class="description">{{ ticket().description || 'No description provided.' }}</p>
+  <dl><dt>Ticket ID</dt><dd class="full-id">{{ ticket().id }}</dd><dt>Created At</dt><dd>{{ ticket().created_at | date:'MMM dd, yyyy HH:mm' }}</dd></dl>
+</article>
+<form (ngSubmit)="save()" class="update-card" aria-label="Update ticket">
+  <h3>Update Ticket</h3>
+  <label for="detail-status">Status</label><select id="detail-status" name="status" [(ngModel)]="status" [disabled]="saving()"><option value="open">Open</option><option value="in_progress">In Progress</option><option value="closed">Closed</option></select>
+  <label for="detail-priority">Priority</label><select id="detail-priority" name="priority" [(ngModel)]="priority" [disabled]="saving()"><option value="low">Low</option><option value="medium">Medium</option><option value="high">High</option></select>
+  <button class="primary" [disabled]="saving() || (status === ticket().status && priority === ticket().priority)">{{ saving() ? 'Updating…' : 'Update Ticket' }}</button>
+</form>
