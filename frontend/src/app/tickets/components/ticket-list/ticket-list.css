@@ -1,14 +1,95 @@
-.table-scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 9px; }
-table { width: 100%; border-collapse: collapse; text-align: left; table-layout: fixed; min-width: 870px; }
-th { background: #f1f4f9; color: #405171; font-size: 13px; font-weight: 650; padding: 17px 14px; }
-td { padding: 16px 14px; border-top: 1px solid #edf0f6; font-size: 14px; }
-th:nth-child(1) { width: 8%; } th:nth-child(2) { width: 21%; } th:nth-child(3) { width: 23%; }
-th:nth-child(4) { width: 15%; } th:nth-child(5) { width: 10%; } th:nth-child(6) { width: 16%; } th:nth-child(7) { width: 7%; }
-.title-cell, .description-cell { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.description-cell, .date-cell { color: var(--muted); }
-.ticket-id { font-family: ui-monospace, monospace; font-size: 12px; }
-.empty { text-align: center; color: var(--muted); padding: 50px 16px; }
-.title-button { display: block; width: 100%; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; border: 0; border-radius: 2px; background: transparent; padding: 0; text-align: left; font-size: 14px; }
-.title-button:hover { color: #1260ff; }
-.status-select { width: 112px; padding: 5px 8px; border: 0; border-radius: 12px; font-size: 12px; cursor: pointer; }
-.details-button { width: 36px; height: 32px; padding: 0; background: #f8f9fc; font-size: 20px; }
+.table-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  table-layout: fixed;
+  min-width: 870px;
+}
+th {
+  background: #f1f4f9;
+  color: #405171;
+  font-size: 13px;
+  font-weight: 650;
+  padding: 17px 14px;
+}
+td {
+  padding: 16px 14px;
+  border-top: 1px solid #edf0f6;
+  font-size: 14px;
+}
+th:nth-child(1) {
+  width: 8%;
+}
+th:nth-child(2) {
+  width: 21%;
+}
+th:nth-child(3) {
+  width: 23%;
+}
+th:nth-child(4) {
+  width: 15%;
+}
+th:nth-child(5) {
+  width: 10%;
+}
+th:nth-child(6) {
+  width: 16%;
+}
+th:nth-child(7) {
+  width: 7%;
+}
+.title-cell,
+.description-cell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.description-cell,
+.date-cell {
+  color: var(--muted);
+}
+.ticket-id {
+  font-family: ui-monospace, monospace;
+  font-size: 12px;
+}
+.empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 50px 16px;
+}
+.title-button {
+  display: block;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  border: 0;
+  border-radius: 2px;
+  background: transparent;
+  padding: 0;
+  text-align: left;
+  font-size: 14px;
+}
+.title-button:hover {
+  color: #1260ff;
+}
+.status-select {
+  width: 112px;
+  padding: 5px 8px;
+  border: 0;
+  border-radius: 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.details-button {
+  width: 36px;
+  height: 32px;
+  padding: 0;
+  background: #f8f9fc;
+  font-size: 20px;
+}

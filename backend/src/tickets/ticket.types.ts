@@ -1,7 +1,7 @@
-export const statuses = ['open', 'in_progress', 'closed'] as const;
-export const priorities = ['low', 'medium', 'high'] as const;
-export type TicketStatus = typeof statuses[number];
-export type TicketPriority = typeof priorities[number];
+export const statuses = ["open", "in_progress", "closed"] as const;
+export const priorities = ["low", "medium", "high"] as const;
+export type TicketStatus = (typeof statuses)[number];
+export type TicketPriority = (typeof priorities)[number];
 
 export interface Ticket {
   id: string;
@@ -32,5 +32,5 @@ export interface TicketPage {
   limit: number;
 }
 
-export type TicketChanges = Partial<Pick<Ticket, 'status' | 'priority'>>;
+export type TicketChanges = Partial<Pick<Ticket, "status" | "priority">>;
 export type TicketStats = Record<TicketStatus, number>;

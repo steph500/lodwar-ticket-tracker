@@ -1,5 +1,22 @@
-form { display: grid; gap: 12px; }
-label { margin-top: 9px; font-size: 14px; font-weight: 600; }
-.required { color: #dc394a; }
-textarea { resize: vertical; min-height: 115px; }
-.form-actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 12px; }
+form {
+  display: grid;
+  gap: 12px;
+}
+label {
+  margin-top: 9px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.required {
+  color: #dc394a;
+}
+textarea {
+  resize: vertical;
+  min-height: 115px;
+}
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 12px;
+}

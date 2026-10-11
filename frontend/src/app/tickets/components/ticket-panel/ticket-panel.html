@@ -1,6 +1,15 @@
 <dialog #panel aria-labelledby="panel-heading" (cancel)="cancel($event)">
-  <button class="close-panel" [attr.aria-label]="'Close ' + title()" [disabled]="busy()" (click)="dismissed.emit()">×</button>
+  <button
+    class="close-panel"
+    [attr.aria-label]="'Close ' + title()"
+    [disabled]="busy()"
+    (click)="dismissed.emit()"
+  >
+    ×
+  </button>
   <h2 id="panel-heading">{{ title() }}</h2>
-  @if (subtitle()) { <p class="subtitle">{{ subtitle() }}</p> }
+  @if (subtitle()) {
+    <p class="subtitle">{{ subtitle() }}</p>
+  }
   <ng-content />
 </dialog>

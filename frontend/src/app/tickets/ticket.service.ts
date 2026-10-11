@@ -1,6 +1,13 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { NewTicket, Ticket, TicketPage, TicketPriority, TicketStats, TicketStatus } from './ticket.model';
+import {
+  NewTicket,
+  Ticket,
+  TicketPage,
+  TicketPriority,
+  TicketStats,
+  TicketStatus,
+} from './ticket.model';
 
 @Injectable({ providedIn: 'root' })
 export class TicketService {
@@ -12,9 +19,13 @@ export class TicketService {
     return this.http.get<TicketPage>('/tickets', { params });
   }
 
-  create(ticket: NewTicket) { return this.http.post<Ticket>('/tickets', ticket); }
+  create(ticket: NewTicket) {
+    return this.http.post<Ticket>('/tickets', ticket);
+  }
   update(id: string, changes: { status?: TicketStatus; priority?: TicketPriority }) {
     return this.http.patch<Ticket>(`/tickets/${id}`, changes);
   }
-  stats() { return this.http.get<TicketStats>('/tickets/stats'); }
+  stats() {
+    return this.http.get<TicketStats>('/tickets/stats');
+  }
 }

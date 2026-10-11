@@ -8,9 +8,20 @@ export interface Ticket {
   priority: TicketPriority;
   created_at: string;
 }
-export interface NewTicket { title: string; description: string; priority: TicketPriority; }
-export interface TicketPage { items: Ticket[]; total: number; page: number; limit: number; }
+export interface NewTicket {
+  title: string;
+  description: string;
+  priority: TicketPriority;
+}
+export interface TicketPage {
+  items: Ticket[];
+  total: number;
+  page: number;
+  limit: number;
+}
 export type TicketStats = Record<TicketStatus, number>;
 export const statusLabels: Record<TicketStatus, string> = {
-  open: 'Open', in_progress: 'In Progress', closed: 'Closed',
+  open: 'Open',
+  in_progress: 'In Progress',
+  closed: 'Closed',
 };

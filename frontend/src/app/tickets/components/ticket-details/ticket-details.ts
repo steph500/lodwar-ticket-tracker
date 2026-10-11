@@ -4,8 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { Ticket, TicketPriority, TicketStatus, statusLabels } from '../../ticket.model';
 
 @Component({
-  selector: 'app-ticket-details', imports: [DatePipe, TitleCasePipe, FormsModule],
-  templateUrl: './ticket-details.html', styleUrl: './ticket-details.css',
+  selector: 'app-ticket-details',
+  imports: [DatePipe, TitleCasePipe, FormsModule],
+  templateUrl: './ticket-details.html',
+  styleUrl: './ticket-details.css',
 })
 export class TicketDetails implements OnChanges {
   readonly ticket = input.required<Ticket>();

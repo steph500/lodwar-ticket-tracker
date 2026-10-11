@@ -1,8 +1,19 @@
-import { AfterViewInit, Component, ElementRef, inject, input, OnDestroy, output, viewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  inject,
+  input,
+  OnDestroy,
+  output,
+  viewChild,
+} from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 @Component({
-  selector: 'app-ticket-panel', templateUrl: './ticket-panel.html', styleUrl: './ticket-panel.css',
+  selector: 'app-ticket-panel',
+  templateUrl: './ticket-panel.html',
+  styleUrl: './ticket-panel.css',
 })
 export class TicketPanel implements AfterViewInit, OnDestroy {
   readonly title = input.required<string>();
