@@ -59,4 +59,4 @@ Verified on **11 October 2026 (EAT)** against the local application and real Pos
 
 Windows application control blocked an unsigned PostgreSQL extension in the official portable runtime. PostgreSQL was installed through Ubuntu's package manager in the existing WSL distribution instead. WSL initially stopped after the setup process exited; a persistent local WSL session keeps the database available. Neither resolution required disabling Windows security or using a hosted database.
 
-Optional deployment was omitted because the application requires a working PostgreSQL connection and no hosted database was selected. No assessment requirement depends on deployment.
+Public deployment is being added with an explicitly approved new Neon Free database. Both Git-linked Vercel projects reached READY, and the frontend production domain returned HTTP 200 without authentication. The database connection and hosted API/browser flows remain pending Neon sign-in and provisioning. Local API tests (3/3) and both builds passed again after the hosting changes. No assessment requirement depends on deployment.
