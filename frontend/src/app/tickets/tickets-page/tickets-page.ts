@@ -128,8 +128,11 @@ export class TicketsPage implements OnInit {
   }
 
   private fail(error: HttpErrorResponse): void {
+    const message = error.error?.error;
     this.error.set(
-      error.error?.error ?? 'Could not connect to the API. Check that the backend is running.',
+      typeof message === 'string'
+        ? message
+        : 'Could not connect to the API. Please try again in a moment.',
     );
   }
 }
