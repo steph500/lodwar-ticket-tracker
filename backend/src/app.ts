@@ -9,3 +9,5 @@ app.use((_req, res) => {
   res.status(404).json({ error: "Route not found." });
 });
 app.use(errorHandler);
+
+export default app;
