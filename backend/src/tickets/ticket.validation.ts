@@ -1,4 +1,4 @@
-import { CreateTicket, ListOptions, priorities, statuses, TicketStatus } from './ticket.types';
+import { CreateTicket, ListOptions, priorities, statuses, TicketChanges, TicketStatus } from './ticket.types';
 
 export class HttpError extends Error {
   constructor(public readonly status: number, message: string) { super(message); }
@@ -48,4 +48,22 @@ export function validateList(query: Record<string, unknown>): ListOptions {
     page: positiveInteger(query.page, 1, 1_000_000),
     limit: positiveInteger(query.limit, 10, 100),
   };
+}
+
+export function validateId(value: unknown): string {
+  if (typeof value !== 'string' || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value)) {
+    invalid('Ticket id must be a UUID.');
+  }
+  return value as string;
+}
+
+export function validateUpdate(value: unknown): TicketChanges {
+  const body = bodyObject(value);
+  const keys = Object.keys(body);
+  if (!keys.length || keys.some(key => key !== 'status' && key !== 'priority')) {
+    invalid('Supply only status and/or priority.');
+  }
+  if ('status' in body && !statuses.includes(body.status as never)) invalid('Invalid status.');
+  if ('priority' in body && !priorities.includes(body.priority as never)) invalid('Invalid priority.');
+  return body as TicketChanges;
 }

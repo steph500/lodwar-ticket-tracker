@@ -31,3 +31,6 @@ export interface TicketPage {
   page: number;
   limit: number;
 }
+
+export type TicketChanges = Partial<Pick<Ticket, 'status' | 'priority'>>;
+export type TicketStats = Record<TicketStatus, number>;
